@@ -52,4 +52,25 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0-rc.2.22430.11" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="AppNavigationPage.xaml.cs">
+	    <DependentUpon>AppNavigationPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="AppNavigationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="ServiceList.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="SiteList.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="UserList.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
