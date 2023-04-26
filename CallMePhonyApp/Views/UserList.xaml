@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="CallMePhonyApp.UserList"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="UserList">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"
+              BackgroundColor="CornflowerBlue">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0"
+                   Padding="50, 0, 0, 0"
+                   FontAttributes="Bold"
+                   FontSize="25"
+                   VerticalTextAlignment="Center">
+                CallMePhony
+            </Label>
+            <SearchBar x:Name="UserSearchBar"
+                       Grid.Column="1"
+                       Margin="0,10,50,10"
+                       BackgroundColor="White"
+                       FontSize="14"
+                       HorizontalOptions="Fill"
+                       Placeholder="Rechercher"
+                       TextColor="Black"
+                       VerticalOptions="Fill"
+                       VerticalTextAlignment="Center" />
+        </Grid>
+
+    </Grid>
+
+</ContentPage>
