@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage x:Class="CallMePhonyApp.Views.ServiceCreationView"
+<ContentPage x:Class="CallMePhonyApp.Views.SiteCreationView"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Title="ServiceCreationView">
+             Title="SiteCreationView">
     <Grid Margin="50"
           Padding="40"
           BackgroundColor="White">
         <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
@@ -15,18 +16,30 @@
         </Grid.ColumnDefinitions>
         <HorizontalStackLayout Grid.Row="0"
                                Grid.Column="0">
-            <Label Text="Nom du service:"
+            <Label Text="Nom du site:"
                    TextColor="Black"
                    VerticalOptions="CenterAndExpand"
                    VerticalTextAlignment="Center" />
-            <Entry x:Name="ServiceNameEntry"
+            <Entry x:Name="SiteNameEntry"
                    BackgroundColor="WhiteSmoke"
-                   Placeholder="Comptabilité"
+                   Placeholder="Site de Paris"
                    TextColor="Black"
                    VerticalOptions="CenterAndExpand"
                    VerticalTextAlignment="Center" />
         </HorizontalStackLayout>
-        <Button Grid.Row="1"
+        <Picker x:Name="SiteTypePicker"
+                Title="Type de site"
+                Grid.Row="1"
+                Grid.Column="0"
+                BackgroundColor="DarkGray"
+                TextColor="Black"
+                TitleColor="Black">
+            <Picker.Items>
+                <x:String>Administration</x:String>
+                <x:String>Production</x:String>
+            </Picker.Items>
+        </Picker>
+        <Button Grid.Row="2"
                 Clicked="Button_Clicked"
                 Text="Ajouter"
                 TextColor="Black" />

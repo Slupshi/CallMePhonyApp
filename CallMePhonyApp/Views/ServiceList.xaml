@@ -33,6 +33,13 @@
                        TextColor="Black"
                        VerticalOptions="Fill"
                        VerticalTextAlignment="Center" />
+            <Button x:Name="AddButton"
+                    Grid.Column="2"
+                    Margin="30, 5"
+                    BackgroundColor="White"
+                    Clicked="Add_Button_Clicked"
+                    Text="Ajouter un service"
+                    TextColor="Black" />
         </Grid>
         <!--  Service list  -->
         <Grid Grid.Row="1"
@@ -47,7 +54,7 @@
                       VerticalScrollBarVisibility="Always">
                 <ListView.Header>
                     <Grid Margin="40,10"
-                          ColumnDefinitions="*,*,0.2*">
+                          ColumnDefinitions="*,*">
                         <Label Grid.Column="0"
                                FontAttributes="Bold"
                                HorizontalOptions="Center"
@@ -58,12 +65,6 @@
                                HorizontalOptions="Center"
                                Text="Collaborateurs"
                                TextColor="Black" />
-                        <Button x:Name="AddButton"
-                                Grid.Column="2"
-                                BackgroundColor="White"
-                                Clicked="Add_Button_Clicked"
-                                Text="Ajouter un service"
-                                TextColor="White" />
                     </Grid>
                 </ListView.Header>
                 <ListView.ItemTemplate>

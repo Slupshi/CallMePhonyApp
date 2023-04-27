@@ -30,7 +30,7 @@ namespace CallMePhonyApp.ViewModels
 
         public async Task DeleteSite()
         {
-            if (SelectedSite != null)
+            if (SelectedSite != null && !SelectedSite.Users.Any())
             {
                 await _siteService.DeleteSite(SelectedSite.Id);
                 if (LoadedSites.Contains(SelectedSite))
@@ -41,6 +41,19 @@ namespace CallMePhonyApp.ViewModels
                     Sites = sites;
                 }
             }
+        }
+
+        public async Task AddService(Site model)
+        {
+            if (model.Name == null || model.SiteType == null)
+            {
+                return;
+            }
+            var newsite = await _siteService.CreateNewSite(model);
+            var sites = Sites.ToList();
+            sites.Add(newsite);
+            Sites = sites;
+            ResetSearch();
         }
 
         public void Search(string query)

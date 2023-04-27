@@ -1,4 +1,5 @@
-﻿using CallMePhonyEntities.Models;
+﻿using CallMePhonyEntities.DTO.Responses;
+using CallMePhonyEntities.Models;
 
 namespace CallMePhonyApp.Data
 {
@@ -22,7 +23,7 @@ namespace CallMePhonyApp.Data
         /// </summary>
         /// <param name="model">The User model</param>
         /// <returns></returns>
-        public Task<string?> CreateNewUser(User model);
+        public Task<UserResponse?> CreateNewUser(User model);
 
         /// <summary>
         /// Update a user from the database with the new model provided

@@ -32,6 +32,10 @@ namespace CallMePhonyApp.ViewModels
 
         public async Task AddService(Service model)
         {
+            if (model.Name == null)
+            {
+                return;
+            }
             var newService = await _serviceService.CreateNewService(model);
             var services = Services.ToList();
             services.Add(newService);
@@ -49,7 +53,7 @@ namespace CallMePhonyApp.ViewModels
 
         public async Task DeleteService()
         {
-            if (SelectedService != null)
+            if (SelectedService != null && !SelectedService.Users.Any())
             {
                 await _serviceService.DeleteService(SelectedService.Id);
                 if (LoadedServices.Contains(SelectedService))

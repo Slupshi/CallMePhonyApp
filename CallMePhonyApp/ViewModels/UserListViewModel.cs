@@ -50,6 +50,21 @@ namespace CallMePhonyApp.ViewModels
             }
         }
 
+        public async Task AddUser(User model)
+        {
+            if (model.FirstName == null || model.LastName == null || model.Email == null || model.Phone == null || model.MobilePhone == null)
+            {
+                return;
+            }
+            var res = await _userService.CreateNewUser(model);
+            var newUser = new User(res);
+            var users = Users.ToList();
+            users.Add(newUser);
+            Users = users;
+            ResetSearch();
+            TemporaryPassword = res.TemporaryPassword;
+        }
+
         public async Task GetUsers()
         {
             Users = await _userService.GetAllUsersAsync();
@@ -85,6 +100,17 @@ namespace CallMePhonyApp.ViewModels
             set
             {
                 _selectedUser = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string? _temporaryPassword;
+        public string? TemporaryPassword
+        {
+            get => _temporaryPassword;
+            set
+            {
+                _temporaryPassword = value;
                 OnPropertyChanged();
             }
         }

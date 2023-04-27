@@ -13,8 +13,6 @@ public partial class ServiceList : ContentPage
         InitializeComponent();
         BindingContext = _viewModel = viewModel;
         _mainViewModel = mainViewModel;
-
-        AddButton.IsVisible = _mainViewModel.IsAdmin ?? false;
     }
 
     private void ServiceSearchBar_TextChanged(object sender, TextChangedEventArgs e)
@@ -37,6 +35,9 @@ public partial class ServiceList : ContentPage
 
     private async void Add_Button_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new ServiceCreationView(_viewModel));
+        if (_mainViewModel.IsAdmin ?? false)
+        {
+            await Navigation.PushAsync(new ServiceCreationView(_viewModel));
+        }
     }
 }

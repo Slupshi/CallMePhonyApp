@@ -32,4 +32,12 @@ public partial class SiteList : ContentPage
 		_viewModel.SelectedSite = e.Item as Site;
 		await Navigation.PushAsync(new SiteDetailsViews(_viewModel, _mainViewModel));
 	}
+
+	private async void Add_Button_Clicked(object sender, EventArgs e)
+	{
+		if (_mainViewModel.IsAdmin ?? false)
+		{
+			await Navigation.PushAsync(new SiteCreationView(_viewModel));
+		}
+	}
 }

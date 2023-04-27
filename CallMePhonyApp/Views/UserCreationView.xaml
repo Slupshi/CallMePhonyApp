@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="CallMePhonyApp.Views.UserCreationView"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="UserCreationView">
+    <Grid Margin="50"
+          Padding="40"
+          BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <HorizontalStackLayout Grid.Row="0"
+                               Grid.Column="0">
+            <Label Text="Prénom:"
+                   TextColor="Black"
+                   VerticalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center" />
+            <Entry x:Name="FirstNameEntry"
+                   BackgroundColor="WhiteSmoke"
+                   Placeholder="John"
+                   TextColor="Black"
+                   VerticalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Grid.Row="0"
+                               Grid.Column="1">
+            <Label Text="NOM:"
+                   TextColor="Black"
+                   VerticalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center" />
+            <Entry x:Name="LastNameEntry"
+                   BackgroundColor="WhiteSmoke"
+                   Placeholder="Doe"
+                   TextColor="Black"
+                   VerticalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Grid.Row="1"
+                               Grid.Column="0">
+            <Label Text="Email:"
+                   TextColor="Black"
+                   VerticalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center" />
+            <Entry x:Name="MailEntry"
+                   BackgroundColor="WhiteSmoke"
+                   Placeholder="john.doe@annur.net"
+                   TextColor="Black"
+                   VerticalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Grid.Row="1"
+                               Grid.Column="1">
+            <Label Text="Genre:"
+                   TextColor="Black"
+                   VerticalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center" />
+            <Entry x:Name="GenderEntry"
+                   BackgroundColor="WhiteSmoke"
+                   Placeholder="Autre"
+                   TextColor="Black"
+                   VerticalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Grid.Row="2"
+                               Grid.Column="0">
+            <Label Text="Téléphone Fixe:"
+                   TextColor="Black"
+                   VerticalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center" />
+            <Entry x:Name="PhoneEntry"
+                   BackgroundColor="WhiteSmoke"
+                   Placeholder="0212345678"
+                   TextColor="Black"
+                   VerticalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center" />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Grid.Row="2"
+                               Grid.Column="1">
+            <Label Text="Téléphone Mobile:"
+                   TextColor="Black"
+                   VerticalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center" />
+            <Entry x:Name="MobilePhoneEntry"
+                   BackgroundColor="WhiteSmoke"
+                   Placeholder="0212345678"
+                   TextColor="Black"
+                   VerticalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center" />
+        </HorizontalStackLayout>
+        <Picker x:Name="SitePicker"
+                Title="Site"
+                Grid.Row="3"
+                Grid.Column="1"
+                BackgroundColor="DarkGray"
+                TextColor="Black"
+                TitleColor="Black" />
+        <Picker x:Name="ServicePicker"
+                Title="Service"
+                Grid.Row="3"
+                Grid.Column="0"
+                BackgroundColor="DarkGray"
+                TextColor="Black"
+                TitleColor="Black" />
+        <Picker x:Name="UserTypePicker"
+                Title="Accès du collaborateur"
+                Grid.Row="4"
+                Grid.Column="0"
+                BackgroundColor="DarkGray"
+                TextColor="Black"
+                TitleColor="Black">
+            <Picker.Items>
+                <x:String>Admin</x:String>
+                <x:String>Collaborateur</x:String>
+            </Picker.Items>
+        </Picker>
+        <Button Grid.Row="5"
+                Grid.ColumnSpan="2"
+                BorderColor="Black"
+                Clicked="Button_Clicked"
+                HeightRequest="60"
+                Text="Ajouter"
+                TextColor="Black"
+                WidthRequest="200" />
+        <Label Grid.Row="6"
+               Grid.ColumnSpan="2"
+               VerticalOptions="Center">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Mot de pass temporaire:   "
+                          TextColor="Black" />
+                    <Span x:Name="PasswordSpan"
+                          FontAttributes="Bold"
+                          Text="{Binding TemporaryPassword}"
+                          TextColor="Black" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Button x:Name="ClipboardButton"
+                Grid.Row="6"
+                Grid.Column="2"
+                BorderColor="Black"
+                Clicked="CopyToClipboardButton_Clicked"
+                HeightRequest="40"
+                HorizontalOptions="End"
+                IsVisible="False"
+                Text="Copy"
+                WidthRequest="80" />
+    </Grid>
+</ContentPage>

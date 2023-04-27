@@ -33,6 +33,13 @@
                        TextColor="Black"
                        VerticalOptions="Fill"
                        VerticalTextAlignment="Center" />
+            <Button x:Name="AddButton"
+                    Grid.Column="2"
+                    Margin="30, 5"
+                    BackgroundColor="White"
+                    Clicked="Add_Button_Clicked"
+                    Text="Ajouter un collaborateur"
+                    TextColor="Black" />
         </Grid>
         <!--  User list  -->
         <Grid Grid.Row="1"

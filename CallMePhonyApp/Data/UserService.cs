@@ -44,12 +44,12 @@ namespace CallMePhonyApp.Data
             return null;
         }
 
-        public async Task<string?> CreateNewUser(User model)
+        public async Task<UserResponse?> CreateNewUser(User model)
         {
             UserResponse response = await _apiService.HttpPostAsync<UserResponse>($"{_baseUrl}/{_url}", model, _mainViewModel.BearerToken);
             if (response != null && response.ErrorMessage == null)
             {
-                return response.TemporaryPassword;
+                return response;
             }
             return null;
         }
