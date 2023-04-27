@@ -2,7 +2,7 @@
 <ContentPage x:Class="CallMePhonyApp.Views.SiteList"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Title="SiteList">
+             Title="AnnuR.net">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
@@ -39,7 +39,8 @@
               Margin="100,40"
               BackgroundColor="White">
             <!--  Separator Not working on windows  -->
-            <ListView ItemsSource="{Binding LoadedSites}"
+            <ListView ItemTapped="ListView_ItemTapped"
+                      ItemsSource="{Binding LoadedSites}"
                       SeparatorColor="Black"
                       SeparatorVisibility="Default"
                       VerticalOptions="FillAndExpand"

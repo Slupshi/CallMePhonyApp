@@ -6,12 +6,9 @@ namespace CallMePhonyApp.ViewModels
     public class UserListViewModel : ViewModelBase
     {
         private readonly IUserService _userService;
-        private readonly MainViewModel _mainViewModel;
-
-        public UserListViewModel(IUserService userService, MainViewModel mainViewModel)
+        public UserListViewModel(IUserService userService)
         {
             _userService = userService;
-            _mainViewModel = mainViewModel;
 
             GetUsers();
         }
@@ -45,9 +42,10 @@ namespace CallMePhonyApp.ViewModels
                 await _userService.DeleteUser(SelectedUser.Id);
                 if (LoadedUsers.Contains(SelectedUser))
                 {
-                    var users = LoadedUsers;
+                    var users = Users.ToList();
                     users.Remove(SelectedUser);
                     LoadedUsers = users;
+                    Users = users;
                 }
             }
         }
@@ -90,7 +88,5 @@ namespace CallMePhonyApp.ViewModels
                 OnPropertyChanged();
             }
         }
-
-        public bool? IsAdmin { get => true; } //{ get => _mainViewModel.IsAdmin; }
     }
 }

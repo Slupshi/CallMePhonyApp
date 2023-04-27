@@ -30,6 +30,38 @@ namespace CallMePhonyApp.ViewModels
             LoadedServices = Services.ToList();
         }
 
+        public async Task AddService(Service model)
+        {
+            var newService = await _serviceService.CreateNewService(model);
+            var services = Services.ToList();
+            services.Add(newService);
+            Services = services;
+            ResetSearch();
+        }
+
+        public async Task UpdateService()
+        {
+            if (SelectedService == null)
+            {
+                await _serviceService.UpdateService(SelectedService);
+            }
+        }
+
+        public async Task DeleteService()
+        {
+            if (SelectedService != null)
+            {
+                await _serviceService.DeleteService(SelectedService.Id);
+                if (LoadedServices.Contains(SelectedService))
+                {
+                    var services = Services.ToList();
+                    services.Remove(SelectedService);
+                    LoadedServices = services;
+                    Services = services;
+                }
+            }
+        }
+
         private List<Service> _loadedServices;
         public List<Service> LoadedServices
         {
@@ -48,6 +80,17 @@ namespace CallMePhonyApp.ViewModels
             set
             {
                 _services = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Service? _selectedService;
+        public Service SelectedService
+        {
+            get => _selectedService;
+            set
+            {
+                _selectedService = value;
                 OnPropertyChanged();
             }
         }

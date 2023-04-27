@@ -20,6 +20,29 @@ namespace CallMePhonyApp.ViewModels
             LoadedSites = Sites.ToList();
         }
 
+        public async Task UpdateSite()
+        {
+            if (SelectedSite == null)
+            {
+                await _siteService.UpdateSite(SelectedSite);
+            }
+        }
+
+        public async Task DeleteSite()
+        {
+            if (SelectedSite != null)
+            {
+                await _siteService.DeleteSite(SelectedSite.Id);
+                if (LoadedSites.Contains(SelectedSite))
+                {
+                    var sites = Sites.ToList();
+                    sites.Remove(SelectedSite);
+                    LoadedSites = sites;
+                    Sites = sites;
+                }
+            }
+        }
+
         public void Search(string query)
         {
             List<Site> sites = Sites.Where(s => s.Name.ToLower().Contains(query.ToLower())).ToList();
@@ -50,6 +73,17 @@ namespace CallMePhonyApp.ViewModels
             set
             {
                 _sites = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Site _selectedSite;
+        public Site SelectedSite
+        {
+            get => _selectedSite;
+            set
+            {
+                _selectedSite = value;
                 OnPropertyChanged();
             }
         }

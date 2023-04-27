@@ -1,5 +1,6 @@
 ﻿using CallMePhonyApp.Data;
 using CallMePhonyApp.ViewModels;
+using CallMePhonyApp.Views;
 using Microsoft.Extensions.Logging;
 
 namespace CallMePhonyApp;
@@ -29,6 +30,12 @@ public static class MauiProgram
         builder.Services.AddScoped<SiteListViewModel>();
         builder.Services.AddScoped<ServiceListViewModel>();
         builder.Services.AddScoped<LoginViewModel>();
+
+        builder.Services.AddSingleton<AppNavigationPage>();
+        builder.Services.AddTransient<UserList>();
+        builder.Services.AddTransient<SiteList>();
+        builder.Services.AddTransient<LoginView>();
+        builder.Services.AddTransient<ServiceList>();
 
 #if DEBUG
         builder.Logging.AddDebug();

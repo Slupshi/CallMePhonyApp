@@ -104,21 +104,19 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-        <Button Grid.Row="4"
+        <Button x:Name="UpdateButton"
+                Grid.Row="4"
                 Grid.Column="0"
                 BackgroundColor="Green"
                 HorizontalOptions="Center"
-                IsVisible="{Binding IsAdmin,
-                                    Converter={StaticResource InverseBooleanConverter}}"
                 Text="Modifier"
                 TextColor="White" />
-        <Button Grid.Row="4"
+        <Button x:Name="DeleteButton"
+                Grid.Row="4"
                 Grid.Column="1"
                 BackgroundColor="Red"
                 Clicked="Delete_Button_Clicked"
                 HorizontalOptions="Center"
-                IsVisible="{Binding IsAdmin,
-                                    Converter={StaticResource InverseBooleanConverter}}"
                 Text="Supprimer"
                 TextColor="White" />
     </Grid>

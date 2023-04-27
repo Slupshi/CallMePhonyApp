@@ -6,10 +6,11 @@
             xmlns:views="clr-namespace:CallMePhonyApp.Views"
             xmlns:vm="clr-namespace:CallMePhonyApp.ViewModels"
             Title="AppNavigationPage">
-    <NavigationPage Title="Annuaire">
+    <!--<NavigationPage Title="Annuaire">
         <x:Arguments>
             <views:UserList Title="Annuaire">
-                <x:Arguments>
+    -->
+    <!--<x:Arguments>
                     <vm:UserListViewModel>
                         <x:Arguments>
                             <service:UserService>
@@ -18,53 +19,73 @@
                                     <vm:MainViewModel />
                                 </x:Arguments>
                             </service:UserService>
-                            <vm:MainViewModel />
                         </x:Arguments>
                     </vm:UserListViewModel>
-                </x:Arguments>
+                </x:Arguments>-->
+    <!--
             </views:UserList>
         </x:Arguments>
     </NavigationPage>
-    <views:ServiceList Title="Liste des services">
+    <NavigationPage Title="Liste des services">
         <x:Arguments>
-            <vm:ServiceListViewModel>
-                <x:Arguments>
-                    <service:ServiceService>
+            <views:ServiceList Title="Liste des services">
+    -->
+    <!--<x:Arguments>
+                    <vm:ServiceListViewModel>
                         <x:Arguments>
-                            <service:ApiService />
-                            <vm:MainViewModel />
+                            <service:ServiceService>
+                                <x:Arguments>
+                                    <service:ApiService />
+                                    <vm:MainViewModel />
+                                </x:Arguments>
+                            </service:ServiceService>
                         </x:Arguments>
-                    </service:ServiceService>
-                </x:Arguments>
-            </vm:ServiceListViewModel>
+                    </vm:ServiceListViewModel>
+                </x:Arguments>-->
+    <!--
+            </views:ServiceList>
         </x:Arguments>
-    </views:ServiceList>
-    <views:SiteList Title="Liste des sites">
+    </NavigationPage>
+    <NavigationPage Title="Liste des sites">
         <x:Arguments>
-            <vm:SiteListViewModel>
-                <x:Arguments>
-                    <service:SiteService>
+            <views:SiteList Title="Liste des sites">
+    -->
+    <!--<x:Arguments>
+                    <vm:SiteListViewModel>
                         <x:Arguments>
-                            <service:ApiService />
-                            <vm:MainViewModel />
+                            <service:SiteService>
+                                <x:Arguments>
+                                    <service:ApiService />
+                                    <vm:MainViewModel />
+                                </x:Arguments>
+                            </service:SiteService>
                         </x:Arguments>
-                    </service:SiteService>
-                </x:Arguments>
-            </vm:SiteListViewModel>
+                    </vm:SiteListViewModel>
+                </x:Arguments>-->
+    <!--
+            </views:SiteList>
         </x:Arguments>
-    </views:SiteList>
-    <views:LoginView Title="Portail administratif">
+    </NavigationPage>
+    <NavigationPage Title="Portail administratif">
         <x:Arguments>
-            <vm:LoginViewModel>
-                <x:Arguments>
-                    <service:AuthService>
+            <views:LoginView Title="Portail administratif">
+    -->
+    <!--<x:Arguments>
+                    <vm:LoginViewModel>
                         <x:Arguments>
-                            <service:ApiService />
-                            <vm:MainViewModel />
+                            <service:AuthService>
+                                <x:Arguments>
+                                    <service:ApiService />
+                                    <vm:MainViewModel />
+                                </x:Arguments>
+                            </service:AuthService>
                         </x:Arguments>
-                    </service:AuthService>
-                </x:Arguments>
-            </vm:LoginViewModel>
+                    </vm:LoginViewModel>
+                </x:Arguments>-->
+    <!--
+            </views:LoginView>
         </x:Arguments>
-    </views:LoginView>
+    </NavigationPage>-->
+
+
 </TabbedPage>
