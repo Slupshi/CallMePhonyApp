@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage x:Class="CallMePhonyApp.UserList"
+<ContentPage x:Class="CallMePhonyApp.Views.UserList"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="UserList">
@@ -29,8 +29,6 @@
                        FontSize="14"
                        HorizontalOptions="Fill"
                        Placeholder="Rechercher"
-                       Text="{Binding SearchRequest,
-                                      Mode=OneWay}"
                        TextChanged="UserSearchBar_TextChanged"
                        TextColor="Black"
                        VerticalOptions="Fill"
@@ -41,7 +39,8 @@
               Margin="100,40"
               BackgroundColor="White">
             <!--  Separator Not working on windows  -->
-            <ListView ItemsSource="{Binding LoadedUsers}"
+            <ListView ItemTapped="ListView_ItemTapped"
+                      ItemsSource="{Binding LoadedUsers}"
                       SeparatorColor="Black"
                       SeparatorVisibility="Default"
                       VerticalOptions="FillAndExpand"

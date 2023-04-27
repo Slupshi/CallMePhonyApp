@@ -2,23 +2,69 @@
 <TabbedPage x:Class="CallMePhonyApp.AppNavigationPage"
             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:local="clr-namespace:CallMePhonyApp"
             xmlns:service="clr-namespace:CallMePhonyApp.Data"
+            xmlns:views="clr-namespace:CallMePhonyApp.Views"
             xmlns:vm="clr-namespace:CallMePhonyApp.ViewModels"
             Title="AppNavigationPage">
-    <local:UserList Title="Annuaire">
+    <NavigationPage Title="Annuaire">
         <x:Arguments>
-            <vm:UserListViewModel>
+            <views:UserList Title="Annuaire">
                 <x:Arguments>
-                    <service:UserService>
+                    <vm:UserListViewModel>
+                        <x:Arguments>
+                            <service:UserService>
+                                <x:Arguments>
+                                    <service:ApiService />
+                                    <vm:MainViewModel />
+                                </x:Arguments>
+                            </service:UserService>
+                            <vm:MainViewModel />
+                        </x:Arguments>
+                    </vm:UserListViewModel>
+                </x:Arguments>
+            </views:UserList>
+        </x:Arguments>
+    </NavigationPage>
+    <views:ServiceList Title="Liste des services">
+        <x:Arguments>
+            <vm:ServiceListViewModel>
+                <x:Arguments>
+                    <service:ServiceService>
                         <x:Arguments>
                             <service:ApiService />
+                            <vm:MainViewModel />
                         </x:Arguments>
-                    </service:UserService>
+                    </service:ServiceService>
                 </x:Arguments>
-            </vm:UserListViewModel>
+            </vm:ServiceListViewModel>
         </x:Arguments>
-    </local:UserList>
-    <local:ServiceList Title="Liste des services" />
-    <local:SiteList Title="Liste des sites" />
+    </views:ServiceList>
+    <views:SiteList Title="Liste des sites">
+        <x:Arguments>
+            <vm:SiteListViewModel>
+                <x:Arguments>
+                    <service:SiteService>
+                        <x:Arguments>
+                            <service:ApiService />
+                            <vm:MainViewModel />
+                        </x:Arguments>
+                    </service:SiteService>
+                </x:Arguments>
+            </vm:SiteListViewModel>
+        </x:Arguments>
+    </views:SiteList>
+    <views:LoginView Title="Portail administratif">
+        <x:Arguments>
+            <vm:LoginViewModel>
+                <x:Arguments>
+                    <service:AuthService>
+                        <x:Arguments>
+                            <service:ApiService />
+                            <vm:MainViewModel />
+                        </x:Arguments>
+                    </service:AuthService>
+                </x:Arguments>
+            </vm:LoginViewModel>
+        </x:Arguments>
+    </views:LoginView>
 </TabbedPage>

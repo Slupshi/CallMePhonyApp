@@ -1,11 +1,97 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage x:Class="CallMePhonyApp.SiteList"
+<ContentPage x:Class="CallMePhonyApp.Views.SiteList"
              xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="SiteList">
-    <VerticalStackLayout>
-        <Label HorizontalOptions="Center"
-               Text="Welcome to .NET MAUI!"
-               VerticalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!--  Topbar  -->
+        <Grid Grid.Row="0"
+              BackgroundColor="CornflowerBlue">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0"
+                   Padding="50, 0, 0, 0"
+                   FontAttributes="Bold"
+                   FontSize="25"
+                   Text="CallMePhony"
+                   VerticalTextAlignment="Center" />
+            <SearchBar x:Name="SiteSearchBar"
+                       Grid.Column="1"
+                       Margin="0,10,50,10"
+                       BackgroundColor="White"
+                       FontSize="14"
+                       HorizontalOptions="Fill"
+                       Placeholder="Rechercher"
+                       TextChanged="SiteSearchBar_TextChanged"
+                       TextColor="Black"
+                       VerticalOptions="Fill"
+                       VerticalTextAlignment="Center" />
+        </Grid>
+        <!--  Site list  -->
+        <Grid Grid.Row="1"
+              Margin="100,40"
+              BackgroundColor="White">
+            <!--  Separator Not working on windows  -->
+            <ListView ItemsSource="{Binding LoadedSites}"
+                      SeparatorColor="Black"
+                      SeparatorVisibility="Default"
+                      VerticalOptions="FillAndExpand"
+                      VerticalScrollBarVisibility="Always">
+                <ListView.Header>
+                    <Grid Margin="40,10"
+                          ColumnDefinitions="*,*,0.5*">
+                        <Label Grid.Column="0"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               Text="Nom"
+                               TextColor="Black" />
+                        <Label Grid.Column="1"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               Text="Type"
+                               TextColor="Black" />
+                        <Label Grid.Column="2"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               Text="Collaborateurs"
+                               TextColor="Black" />
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="40, 10"
+                                  ColumnDefinitions="*,*,0.5*"
+                                  RowDefinitions="Auto">
+                                <Label Grid.Column="0"
+                                       FontAttributes="Bold"
+                                       FontSize="20"
+                                       HorizontalOptions="Center"
+                                       Text="{Binding Name}"
+                                       TextColor="Black" />
+                                <Label Grid.Column="1"
+                                       FontSize="16"
+                                       HorizontalOptions="Center"
+                                       Text="{Binding SiteType}"
+                                       TextColor="Black" />
+                                <Label Grid.Column="2"
+                                       FontSize="25"
+                                       HorizontalOptions="Center"
+                                       Text="200"
+                                       TextColor="Black" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </Grid>
+
 </ContentPage>

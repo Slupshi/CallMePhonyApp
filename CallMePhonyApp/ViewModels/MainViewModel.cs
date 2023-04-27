@@ -4,14 +4,40 @@ namespace CallMePhonyApp.ViewModels
 {
     public class MainViewModel : ViewModelBase
     {
-        public User CurrentUser { get; set; }
-
-        public MainViewModel()
+        private bool? _isAdmin = false;
+        public bool? IsAdmin
         {
-
+            get => _isAdmin;
+            set
+            {
+                _isAdmin = value;
+                OnPropertyChanged();
+            }
         }
 
-        public void LogUser()
+        private User? _currentUser;
+        public User? CurrentUser
+        {
+            get => _currentUser;
+            set
+            {
+                _currentUser = value;
+                OnPropertyChanged();
+                IsAdmin = CurrentUser?.UserType == CallMePhonyEntities.Enums.UserType.Admin;
+            }
+        }
+        private string? _bearerToken;
+        public string? BearerToken
+        {
+            get => _bearerToken;
+            set
+            {
+                _bearerToken = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public MainViewModel()
         {
 
         }
@@ -19,6 +45,7 @@ namespace CallMePhonyApp.ViewModels
         public void DisconnectUser()
         {
             CurrentUser = null;
+            BearerToken = null;
         }
 
     }
