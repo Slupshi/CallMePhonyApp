@@ -15,11 +15,12 @@ namespace CallMePhonyApp.ViewModels
 
         public void Search(string query)
         {
-            // Make the query and username into lower cases
-            var results = Users.Where(u => u.UserName.ToLower().Contains(query.Trim().ToLower())).ToList();
-            results.AddRange(Users.Where(u => u.Site != null && u.Site.Name.ToLower().Contains(query.Trim().ToLower())));
-            results.AddRange(Users.Where(u => u.Service != null && u.Service.Name.ToLower().Contains(query.Trim().ToLower())));
-            LoadedUsers = results;
+            // Make the query and user fields into lower cases
+            LoadedUsers = Users.Where(u => u.UserName.ToLower()
+                                                     .Contains(query.Trim().ToLower()) ||
+                                                     (u.Site != null && u.Site.Name.ToLower().Contains(query.Trim().ToLower())) ||
+                                                     u.Service != null && u.Service.Name.ToLower().Contains(query.Trim().ToLower()))
+                               .ToList();
         }
 
         public void ResetSearch()

@@ -20,4 +20,9 @@ public partial class SiteDetailsViews : ContentPage
 	{
 		await _viewModel.DeleteSite();
 	}
+
+	private async void UpdateButton_Clicked(object sender, EventArgs e)
+	{
+		await Navigation.PushAsync(new SiteEditView(_viewModel));
+	}
 }

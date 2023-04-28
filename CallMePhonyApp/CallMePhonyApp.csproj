@@ -81,6 +81,9 @@
 	  <MauiXaml Update="Views\SiteDetailsViews.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\SiteEditView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\SiteList.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

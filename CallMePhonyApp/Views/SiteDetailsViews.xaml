@@ -37,6 +37,7 @@
                 Grid.Row="1"
                 Grid.Column="0"
                 BackgroundColor="Green"
+                Clicked="UpdateButton_Clicked"
                 HorizontalOptions="Center"
                 Text="Modifier"
                 TextColor="White" />

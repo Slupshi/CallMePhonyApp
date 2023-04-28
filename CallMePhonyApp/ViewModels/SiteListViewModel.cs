@@ -20,11 +20,18 @@ namespace CallMePhonyApp.ViewModels
             LoadedSites = Sites.ToList();
         }
 
-        public async Task UpdateSite()
+        public async Task UpdateSite(Site model)
         {
-            if (SelectedSite == null)
+            if (SelectedSite != null && model.Name != null || model.Name != string.Empty)
             {
-                await _siteService.UpdateSite(SelectedSite);
+                var sites = Sites.ToList();
+                sites.Remove(SelectedSite);
+                SelectedSite.Name = model.Name;
+                SelectedSite.SiteType = model.SiteType;
+                SelectedSite = await _siteService.UpdateSite(SelectedSite);
+                sites.Add(SelectedSite);
+                Sites = sites;
+                ResetSearch();
             }
         }
 
@@ -58,9 +65,7 @@ namespace CallMePhonyApp.ViewModels
 
         public void Search(string query)
         {
-            List<Site> sites = Sites.Where(s => s.Name.ToLower().Contains(query.ToLower())).ToList();
-            sites.AddRange(Sites.Where(s => s.SiteType.ToString().ToLower().Contains(query.ToLower())));
-            LoadedSites = sites;
+            LoadedSites = Sites.Where(s => s.Name.ToLower().Contains(query.ToLower()) || s.SiteType.ToString().ToLower().Contains(query.ToLower())).ToList();
         }
 
         public void ResetSearch()
